@@ -68,6 +68,6 @@ Para facilitar a reprodução manual dos cenários testados ou a depuração loc
 
 Embora a entrega atual cubra de forma robusta os testes funcionais, de segurança e performance, alguns aprimoramentos arquiteturais ficariam para uma segunda fase do projeto, visando consolidar ainda mais a qualidade e agilidade do time:
 
-### 1. Pipeline de CI/CD
+### Pipeline de CI/CD
 **Status:** Não foi implementado no escopo atual (priorizei a qualidade dos testes em si).
 **Solução Proposta:** Implementar um pipeline no **GitLab CI** (ou GitHub Actions) para automatizar a execução dos testes a cada `push` ou `Merge Request`.
