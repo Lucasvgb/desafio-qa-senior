@@ -1,0 +1,28 @@
+{
+	"id": "78761c35-fad0-4f39-852d-b7268e51c334",
+	"name": "IplanRioEnvironments",
+	"values": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8080",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "token",
+			"value": "qa-challenge-token",
+			"type": "default",
+			"enabled": false
+		},
+		{
+			"key": "url_8080/",
+			"value": "http://localhost:8080/",
+			"type": "default",
+			"enabled": false
+		}
+	],
+	"color": null,
+	"_postman_variable_scope": "environment",
+	"_postman_exported_at": "2026-08-10T23:59:18.579Z",
+	"_postman_exported_using": "Postman/12.22.9"
+}

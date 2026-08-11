@@ -1,0 +1,304 @@
+{
+  "info": {
+    "_postman_id": "ebfc3ec1-fe68-475c-a541-65b607237ac8",
+    "name": "iplanRio",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "33988706"
+  },
+  "item": [
+    {
+      "name": "TC01 -  ID_invalido",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/v1/services/999999",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "services",
+            "999999"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "TC02 - Paginacao",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/v1/services?page=-11&per_page=999999999",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "services"
+          ],
+          "query": [
+            {
+              "key": "page",
+              "value": "-11"
+            },
+            {
+              "key": "per_page",
+              "value": "999999999"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "TC03 - Busca_vazia",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"query\": \"\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/api/v1/services/search",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "services",
+            "search"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "TC04 - Verificar_Webhook",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"mensagem\": \"teste\"}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/api/v1/webhooks/catalog",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "webhooks",
+            "catalog"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "TC05 - Verificar_Webhook_HMAC",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [
+              "const secret = \"webhook-secret-2024\";",
+              "const rawBody = pm.request.body.raw;",
+              "",
+              "// Calcula o HMAC-SHA256",
+              "const hmac = CryptoJS.HmacSHA256(rawBody, secret).toString(CryptoJS.enc.Hex);",
+              "",
+              "",
+              "//Adiciona ou atualiza o header ",
+              "pm.request.headers.upsert({",
+              "    key: \"X-Signature-256\",",
+              "    value: `sha256=${hmac}`",
+              "});",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"event\": \"service.updated\",\n  \"service_id\": \"123\",\n  \"timestamp\": \"2026-08-04T12:00:00Z\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{url_8080/}}api/v1/webhooks/catalog",
+          "host": [
+            "{{url_8080/}}api"
+          ],
+          "path": [
+            "v1",
+            "webhooks",
+            "catalog"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "TC06 - Verificar ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/v1/services/s001' AND 1=1 --",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "services",
+            "s001' AND 1=1 --"
+          ],
+          "query": [
+            {
+              "key": "",
+              "value": "",
+              "disabled": true
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "TC07 - recommendations",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/v1/services/s001/recommendations",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "services",
+            "s001",
+            "recommendations"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "TC08 - Verificar_favorite",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/v1/services/s001/favorite",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "services",
+            "s001",
+            "favorite"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{token}}",
+        "type": "string"
+      }
+    ]
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": ""
+    },
+    {
+      "key": "token",
+      "value": ""
+    },
+    {
+      "key": "url_8080/",
+      "value": ""
+    }
+  ]
+}
