@@ -63,7 +63,11 @@ Para facilitar a reprodução manual dos cenários testados ou a depuração loc
 **Como importar:**
 1. Abra o Postman.
 2. Clique em **File > Import** (ou no botão "Import" no canto superior esquerdo).
-3. Selecione os arquivos `.json` baixados (ou faça upload via link).
-4. Selecione o ambiente `Desafio QA Local` no canto superior direito e comece a testar.
 
-> *Nota: Lembre-se de subir a API com `docker-compose up -d` antes de rodar as requisições.*
+## 🚧 Próximos Passos e Melhorias (O que faria com mais tempo)
+
+Embora a entrega atual cubra de forma robusta os testes funcionais, de segurança e performance, alguns aprimoramentos arquiteturais ficariam para uma segunda fase do projeto, visando consolidar ainda mais a qualidade e agilidade do time:
+
+### 1. Pipeline de CI/CD
+**Status:** Não foi implementado no escopo atual (priorizei a qualidade dos testes em si).
+**Solução Proposta:** Implementar um pipeline no **GitLab CI** (ou GitHub Actions) para automatizar a execução dos testes a cada `push` ou `Merge Request`.
